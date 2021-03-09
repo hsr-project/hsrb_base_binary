@@ -1,5 +1,6 @@
 #!/bin/sh
 # Copyright (c) 2020 TOYOTA MOTOR CORPORATION
+# Copyright (c) 2021 MID Academic Promotions, Inc.
 # All rights reserved.
 
 # Redistribution and use in source and binary forms, with or without
@@ -27,6 +28,5 @@
 # POSSIBILITY OF SUCH DAMAGE.
 
 # to github
-docker push ghcr.io/hsr-project/tmc_wrs_docker:latest
-docker push ghcr.io/hsr-project/tmc_wrs_docker:nvidia
-docker push ghcr.io/hsr-project/tmc_wrs_docker:forclass
+docker push ghcr.io/hsr-project/hsrb_base_binary:latest
+docker push ghcr.io/hsr-project/hsrb_base_binary:forclass

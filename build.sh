@@ -1,5 +1,6 @@
 #!/bin/bash
 # Copyright (c) 2020 TOYOTA MOTOR CORPORATION
+# Copyright (c) 2021 MID Academic Promotions, Inc.
 # All rights reserved.
 
 # Redistribution and use in source and binary forms, with or without
@@ -28,7 +29,7 @@
 
 set -e
 
-IMAGE_NAME="ghcr.io/hsr-project/tmc_wrs_docker"
+IMAGE_NAME="ghcr.io/hsr-project/hsrb_base_binary"
 
 BUILD_DATE=`date +%Y%m%d`
 BUILD_ARGS=""
@@ -44,5 +45,4 @@ if [[ -n "${no_proxy}" ]]; then
 fi
 
 docker build ${BUILD_ARGS} -t ${IMAGE_NAME}:latest . # -t ${IMAGE_NAME}:${BUILD_DATE}
-docker build ${BUILD_ARGS} --build-arg BASE_IMAGE=${IMAGE_NAME}:latest -f Dockerfile.nvidia -t ${IMAGE_NAME}:nvidia . # -t ${IMAGE_NAME}:nvidia-${BUILD_DATE}
 docker build ${BUILD_ARGS} --build-arg BASE_IMAGE=${IMAGE_NAME}:latest -f Dockerfile.forclass -t ${IMAGE_NAME}:forclass . # -t ${IMAGE_NAME}:forclass-${BUILD_DATE}

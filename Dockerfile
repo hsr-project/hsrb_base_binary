@@ -1,4 +1,5 @@
 # Copyright (c) 2019 TOYOTA MOTOR CORPORATION
+# Copyright (c) 2021 MID Academic Promotions, Inc.
 # All rights reserved.
 
 # Redistribution and use in source and binary forms, with or without
@@ -73,27 +74,21 @@ RUN apt-get update && \
     apt-get autoremove -y && \
     apt-get clean
 
-RUN mkdir /wrs_ws
-ADD src /wrs_ws/src
-RUN cd /wrs_ws/src && source /opt/ros/$ROS_DISTRO/setup.bash && catkin_init_workspace || true
-#RUN cd /wrs_ws && source /opt/ros/$ROS_DISTRO/setup.bash && rosdep update && rosdep install --from-paths src --ignore-src -r -y
-RUN cd /wrs_ws && source /opt/ros/$ROS_DISTRO/setup.bash && catkin_make install -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/ros/$ROS_DISTRO -DCATKIN_ENABLE_TESTING=0
+RUN mkdir /ws
+ADD src /ws/src
+RUN cd /ws/src && source /opt/ros/$ROS_DISTRO/setup.bash && catkin_init_workspace || true
+#RUN cd /ws && source /opt/ros/$ROS_DISTRO/setup.bash && rosdep update && rosdep install --from-paths src --ignore-src -r -y
+RUN cd /ws && source /opt/ros/$ROS_DISTRO/setup.bash && catkin_make install -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/ros/$ROS_DISTRO -DCATKIN_ENABLE_TESTING=0
 
-ADD entrypoint-wrs.sh /entrypoint.sh
+ADD entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
-
-#ADD filterable-rosmaster.py /opt/ros/melodic/bin/
-#RUN rm /opt/ros/$ROS_DISTRO/bin/rosmaster && ln -s /opt/ros/$ROS_DISTRO/bin/filterable-rosmaster.py /opt/ros/$ROS_DISTRO/bin/rosmaster
-
-RUN source /opt/ros/$ROS_DISTRO/setup.bash && rosrun tmc_gazebo_task_evaluators setup_score_widget
 
 ADD supervisord.conf /etc/supervisor/supervisord.conf
 
 VOLUME [ \
     "/opt/ros/melodic/share/hsrb_description", \
     "/opt/ros/melodic/share/hsrb_meshes", \
-    "/opt/ros/melodic/share/tmc_wrs_gazebo_worlds", \
     "/opt/ros/melodic/share/gazebo_ros", \
     "/opt/ros/melodic/lib/gazebo_ros", \
     "/opt/ros/melodic/lib/python2.7/dist-packages/gazebo_ros", \
