@@ -22,9 +22,6 @@
 [submodule "src/hsrb_rosnav"]
 	path = src/hsrb_rosnav
 	url = https://github.com/hsr-project/hsrb_rosnav.git
-[submodule "src/hsrb_wrs_gazebo_launch"]
-	path = src/hsrb_wrs_gazebo_launch
-	url = https://github.com/hsr-project/hsrb_wrs_gazebo_launch.git
 [submodule "src/iris_lama_ros"]
 	path = src/iris_lama_ros
 	url = https://github.com/iris-ua/iris_lama_ros.git
@@ -43,12 +40,6 @@
 [submodule "src/tmc_gazebo_plugins"]
 	path = src/tmc_gazebo_plugins
 	url = https://github.com/hsr-project/tmc_gazebo_plugins.git
-[submodule "src/tmc_gazebo_task_evaluators"]
-	path = src/tmc_gazebo_task_evaluators
-	url = https://github.com/hsr-project/tmc_gazebo_task_evaluators.git
 [submodule "src/tmc_suction"]
 	path = src/tmc_suction
 	url = https://github.com/hsr-project/tmc_suction.git
-[submodule "src/tmc_wrs_gazebo"]
-	path = src/tmc_wrs_gazebo
-	url = https://github.com/hsr-project/tmc_wrs_gazebo.git
